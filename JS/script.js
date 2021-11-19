@@ -24,11 +24,18 @@ $(document).ready(function(){
         },
             500, 'linear'
         );
-
     });
-
-
-
-
-
 });
+
+/* EmailJs function */
+
+function send(){
+    emailjs.send("service_u72s96f","template_6njkiqk",{
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value,
+        }).then(Response=>{
+            window.alert("your message was sent successfully !! thanks for texting me 😄 ! ");
+        })
+}
+document.getElementById("sendEmail").addEventListener("click",send)

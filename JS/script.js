@@ -28,7 +28,6 @@ $(document).ready(function(){
 });
 
 /* EmailJs function */
-
 function send(){
     emailjs.send("service_u72s96f","template_6njkiqk",{
         name: document.getElementById("name").value,
@@ -39,3 +38,9 @@ function send(){
         })
 }
 document.getElementById("sendEmail").addEventListener("click",send)
+
+/* clear Input  */
+function clear(){
+    document.getElementById("myForm").reset()
+}
+document.getElementById("sendEmail").addEventListener("click",clear)

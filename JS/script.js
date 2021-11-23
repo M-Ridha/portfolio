@@ -34,7 +34,15 @@ function send(){
         email: document.getElementById("email").value,
         message: document.getElementById("message").value,
         }).then(Response=>{
-            window.alert("your message was sent successfully !! thanks for texting me 😄 ! ");
+            Swal.fire({
+                position: 'center',
+                width : "40%" , 
+                icon: 'success',
+                title: 'your message was sent successfully !!',
+                text : "Thanks for texting me 😄 !" ,
+                showConfirmButton: false,
+                timer: 3500
+            })
         })
 }
 document.getElementById("sendEmail").addEventListener("click",send)
@@ -43,4 +51,4 @@ document.getElementById("sendEmail").addEventListener("click",send)
 function clear(){
     document.getElementById("myForm").reset()
 }
-document.getElementById("sendEmail").addEventListener("click",clear)
+document.getElementById("sendEmail").addEventListener("click",clear) 

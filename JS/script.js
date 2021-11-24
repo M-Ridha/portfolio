@@ -27,28 +27,56 @@ $(document).ready(function(){
     });
 });
 
-/* EmailJs function */
-function send(){
-    emailjs.send("service_u72s96f","template_6njkiqk",{
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        message: document.getElementById("message").value,
-        }).then(Response=>{
-            Swal.fire({
-                position: 'center',
-                width : "40%" , 
-                icon: 'success',
-                title: 'your message was sent successfully !!',
-                text : "Thanks for texting me 😄 !" ,
-                showConfirmButton: false,
-                timer: 3500
-            })
-        })
-}
-document.getElementById("sendEmail").addEventListener("click",send)
+/* form function */
+document.getElementById("sendEmail").addEventListener("click",function(){
 
-/* clear Input  */
-function clear(){
-    document.getElementById("myForm").reset()
-}
-document.getElementById("sendEmail").addEventListener("click",clear) 
+    if (document.getElementById("name").value==="") {
+        Swal.fire({
+            position: 'top',
+            width : "40%" , 
+            icon: 'warning',
+            title: ' Please enter your name 😄 !!',
+            showConfirmButton: false,
+            timer: 3500
+        })
+        return false;    
+    } else if (document.getElementById("email").value === "") {
+        Swal.fire({
+            position: 'top',
+            width : "40%" , 
+            icon: 'warning',
+            title: ' Please enter your email 😄 !!',
+            showConfirmButton: false,
+            timer: 3500
+        })
+        return false;
+    } else if (document.getElementById("message").value === "") {
+        Swal.fire({
+            position: 'top',
+            width : "40%" , 
+            icon: 'warning',
+            title: ' Please don`t forget to write your message 😄 !!',
+            showConfirmButton: false,
+            timer: 3500
+        })
+        return false
+    } else {
+        emailjs.send("service_u72s96f","template_6njkiqk",{
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+            }).then(Response=>{
+                Swal.fire({
+                    position: 'center',
+                    width : "40%" , 
+                    icon: 'success',
+                    title: 'your message was sent successfully !!',
+                    text : "Thanks for texting me 😄 !" ,
+                    showConfirmButton: false,
+                    timer: 3500
+                }).then(()=>{
+                    document.getElementById("myForm").reset()
+                })
+        })
+    };
+})
